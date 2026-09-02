@@ -1,7 +1,14 @@
 {
-  "ok": [
-    "microsoft/Phi-4"
-  ],
+  "ok": [],
   "skipped": [],
-  "failed": []
+  "failed": [
+    [
+      "Qwen/Qwen2.5-32B-Instruct",
+      "RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}"
+    ],
+    [
+      "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
+      "RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}"
+    ]
+  ]
 }
