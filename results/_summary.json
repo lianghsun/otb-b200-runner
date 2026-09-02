@@ -1,14 +1,7 @@
 {
-  "ok": [],
+  "ok": [
+    "nvidia/NVIDIA-Nemotron-3-Nano-4B-BF16"
+  ],
   "skipped": [],
-  "failed": [
-    [
-      "Qwen/Qwen2.5-32B-Instruct",
-      "RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}"
-    ],
-    [
-      "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
-      "RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}"
-    ]
-  ]
+  "failed": []
 }
