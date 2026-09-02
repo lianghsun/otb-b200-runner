@@ -1,8 +1,12 @@
 {
   "ok": [
-    "ornith-ai/Ornith-1.5-9B",
-    "THUDM/glm-4-9b-chat"
+    "mistralai/Mistral-Small-24B-Instruct-2501"
   ],
   "skipped": [],
-  "failed": []
+  "failed": [
+    [
+      "microsoft/Phi-4-reasoning-plus",
+      "RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}"
+    ]
+  ]
 }
