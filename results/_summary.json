@@ -1,6 +1,6 @@
 {
   "ok": [
-    "openai/gpt-oss-20b"
+    "microsoft/Phi-4"
   ],
   "skipped": [],
   "failed": []
