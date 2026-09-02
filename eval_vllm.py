@@ -57,6 +57,7 @@ DEFAULT_MODELS = [
     "01-ai/Yi-1.5-9B-Chat",
     "mistralai/Mistral-Nemo-Instruct-2407",       # (g)
     "microsoft/Phi-4",
+    "openai/gpt-oss-20b",
     "Qwen/Qwen3-30B-A3B",
     "deepseek-ai/DeepSeek-V2-Lite-Chat",
     "mistralai/Mistral-Small-24B-Instruct-2501",  # (g)
