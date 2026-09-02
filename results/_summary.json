@@ -1,0 +1,10 @@
+{
+  "ok": [],
+  "skipped": [],
+  "failed": [
+    [
+      "01-ai/Yi-1.5-9B-Chat",
+      "RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}"
+    ]
+  ]
+}
