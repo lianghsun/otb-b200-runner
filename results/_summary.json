@@ -1,7 +1,16 @@
 {
   "ok": [
-    "01-ai/Yi-1.5-9B-Chat"
+    "mistralai/Mistral-Nemo-Instruct-2407"
   ],
   "skipped": [],
-  "failed": []
+  "failed": [
+    [
+      "microsoft/Phi-4-reasoning-plus",
+      "RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}"
+    ],
+    [
+      "microsoft/Phi-4",
+      "RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}"
+    ]
+  ]
 }
