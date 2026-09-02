@@ -1,16 +1,7 @@
 {
   "ok": [
-    "mistralai/Mistral-Nemo-Instruct-2407"
+    "tencent/Hunyuan-7B-Instruct"
   ],
   "skipped": [],
-  "failed": [
-    [
-      "microsoft/Phi-4-reasoning-plus",
-      "RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}"
-    ],
-    [
-      "microsoft/Phi-4",
-      "RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}"
-    ]
-  ]
+  "failed": []
 }
