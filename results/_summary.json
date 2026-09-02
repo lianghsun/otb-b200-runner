@@ -1,6 +1,7 @@
 {
   "ok": [
-    "tencent/Hunyuan-7B-Instruct"
+    "ornith-ai/Ornith-1.5-9B",
+    "THUDM/glm-4-9b-chat"
   ],
   "skipped": [],
   "failed": []
