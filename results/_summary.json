@@ -1,7 +1,17 @@
 {
   "ok": [
-    "nvidia/NVIDIA-Nemotron-3-Nano-4B-BF16"
+    "Qwen/Qwen3-32B",
+    "MiniMaxAI/MiniMax-M2"
   ],
   "skipped": [],
-  "failed": []
+  "failed": [
+    [
+      "meta-models/Muse-Glimmer-30B",
+      "RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}"
+    ],
+    [
+      "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
+      "RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}"
+    ]
+  ]
 }
