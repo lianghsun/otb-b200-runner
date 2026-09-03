@@ -1,7 +1,7 @@
 {
   "ok": [
-    "nvidia/NVIDIA-Nemotron-Labs-3-Puzzle-75B-A9B-NVFP4",
-    "deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
+    "nvidia/NVIDIA-Nemotron-Nano-9B-v2",
+    "Qwen/QwQ-32B"
   ],
   "skipped": [],
   "failed": []
