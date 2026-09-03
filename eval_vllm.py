@@ -73,8 +73,8 @@ DEFAULT_MODELS = [
     "microsoft/Phi-4-reasoning-plus",
     "Qwen/QwQ-32B",
     "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B",
-    "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
-    "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
+    # R1-Distill 32B/70B cancelled per request (distills no longer needed;
+    # 14B already boarded, kept). QwQ / Phi-4-reasoning are not distills.
 ]
 
 # Reasoning models need room to finish thinking before the \boxed{} answer.
