@@ -52,7 +52,7 @@ DEFAULT_MODELS = [
     # multimodal (MLX couldn't load it; vLLM serves the text path)
     "ornith-ai/Ornith-1.5-9B",
     "ornith-ai/Ornith-1.5-35B-A3B",               # ~72GB bf16 MoE (A3B); Qwen3.5-MoE-VL, text path
-    "Qwen/Qwen3.8-27B",                            # ~56GB bf16; the paper's anchor, re-run on the standard 22.2k sample
+    # Qwen/Qwen3.8-27B (paper anchor) assigned to the H200 batch, not here.
     # big, non-reasoning
     "tencent/Hunyuan-7B-Instruct",                # (g?) trust_remote_code
     "THUDM/glm-4-9b-chat",
