@@ -40,11 +40,14 @@ if ! ./.venv/bin/python -c "import vllm, torch; print('   vLLM', vllm.__version_
 fi
 
 echo "== 3. background auto-push: commit+push new results every 5 min"
+# Each runner pushes to its own results branch so several machines never clash.
+# B200 uses the default; the H200 box sets RESULTS_BRANCH=h200-results.
+BRANCH="${RESULTS_BRANCH:-b200-results}"
 push_now(){
   git add results 2>/dev/null || true
   git -c user.email=lianghsunh@gmail.com -c user.name="Liang-Hsun Huang" \
     commit -q -m "results $(date +%H:%M)" 2>/dev/null || true
-  if err=$(git push origin HEAD:b200-results 2>&1); then
+  if err=$(git push origin "HEAD:$BRANCH" 2>&1); then
     echo "   [auto-push $(date +%H:%M)] ok"
   else
     echo "   [auto-push $(date +%H:%M)] !! PUSH FAILED — results safe on disk, fix creds:"
@@ -54,16 +57,16 @@ push_now(){
 if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   # self-update CODE from main WITHOUT touching results/ or resetting the branch
   git fetch -q origin main 2>/dev/null || true
-  git checkout -q origin/main -- eval_vllm.py README.md 2>/dev/null || true
-  if git show-ref -q --verify refs/heads/b200-results; then
-    git checkout -q b200-results 2>/dev/null || true
+  git checkout -q origin/main -- eval_vllm.py prepare_breeze2.py README.md 2>/dev/null || true
+  if git show-ref -q --verify "refs/heads/$BRANCH"; then
+    git checkout -q "$BRANCH" 2>/dev/null || true
   else
-    git checkout -q -b b200-results 2>/dev/null || true
+    git checkout -q -b "$BRANCH" 2>/dev/null || true
   fi
   ( while true; do sleep 300; push_now; done ) &
   PUSHER=$!
   trap 'kill $PUSHER 2>/dev/null || true; push_now' EXIT
-  echo "   auto-push armed (pid $PUSHER) — results stream to branch b200-results"
+  echo "   auto-push armed (pid $PUSHER) — results stream to branch $BRANCH"
 fi
 
 echo "== 4. run the eval (per model: formosa then exam, then reclaim its weights)"
