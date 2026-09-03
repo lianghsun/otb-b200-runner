@@ -55,6 +55,7 @@ DEFAULT_MODELS = [
     "tencent/Hunyuan-7B-Instruct",                # (g?) trust_remote_code
     "THUDM/glm-4-9b-chat",
     "01-ai/Yi-1.5-9B-Chat",
+    "MediaTek-Research/Llama-Breeze2-3B-Instruct",  # vision stripped — run prepare_breeze2.py first
     "mistralai/Mistral-Nemo-Instruct-2407",       # (g)
     "microsoft/Phi-4",
     "openai/gpt-oss-20b",
@@ -84,6 +85,13 @@ MAX_TOKENS = {
     "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B": 16384,
     "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B": 16384,
     "deepseek-ai/DeepSeek-R1-Distill-Llama-70B": 16384,
+}
+
+# Models vLLM can't load as-is and must be pre-converted to a local checkpoint.
+# prepare_breeze2.py strips Breeze2's InternVL vision tower to a plain Llama;
+# the board name stays the HF id, loading uses the local path.
+LOCAL_ALIAS = {
+    "MediaTek-Research/Llama-Breeze2-3B-Instruct": str(HERE / "breeze2-3b-text"),
 }
 
 
@@ -170,9 +178,11 @@ def run_model(model, benches, max_tokens):
     # reasoning models need a long context window; keep others tight to save KV
     reasoning = model in MAX_TOKENS
     max_model_len = 20480 if reasoning else 8192
-    print(f"\n=== loading {model}  (tp={tp}, max_model_len={max_model_len})", flush=True)
+    path = LOCAL_ALIAS.get(model, model)
+    print(f"\n=== loading {model}  (tp={tp}, max_model_len={max_model_len})"
+          + (f"  [local: {path}]" if path != model else ""), flush=True)
     t0 = time.time()
-    llm = LLM(model=model, dtype="bfloat16", trust_remote_code=True,
+    llm = LLM(model=path, dtype="bfloat16", trust_remote_code=True,
               tensor_parallel_size=tp, gpu_memory_utilization=0.90,
               max_model_len=max_model_len, enforce_eager=False)
     print(f"    loaded in {time.time() - t0:.0f}s", flush=True)

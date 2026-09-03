@@ -76,6 +76,20 @@ want to shard a big model across some GPUs and run others in parallel later.
    `R1-Distill-*`) get `max_tokens=16384` and a 20k context; they are the slow
    ones. Everything else uses 4096.
 
+## Breeze2 (vision-stripped) — one-time prep
+
+`MediaTek-Research/Llama-Breeze2-3B-Instruct` is an InternVL wrapper (InternViT
+vision tower + Llama-3.2-3B) that vLLM can't load. Run the converter once to
+extract the language model into a plain Llama checkpoint at `./breeze2-3b-text`:
+
+```sh
+HF_TOKEN=hf_xxx ./.venv/bin/python prepare_breeze2.py
+```
+
+`eval_vllm.py` maps the HF id to that local dir (`LOCAL_ALIAS`), so it runs as
+part of the normal queue and boards under its real name. Do this before the run
+reaches it (or it FAILs with "path not found").
+
 ## Results
 
 Per-model JSONL lands in `results/<model>/{formosa,exam}.jsonl`, each line
