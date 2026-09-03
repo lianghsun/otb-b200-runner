@@ -51,6 +51,7 @@ _ANY = re.compile(r"(?<![A-Za-z])([A-Da-d])(?![A-Za-z])")
 DEFAULT_MODELS = [
     # multimodal (MLX couldn't load it; vLLM serves the text path)
     "ornith-ai/Ornith-1.5-9B",
+    "ornith-ai/Ornith-1.5-35B-A3B",               # ~72GB bf16 MoE (A3B); Qwen3.5-MoE-VL, text path
     # big, non-reasoning
     "tencent/Hunyuan-7B-Instruct",                # (g?) trust_remote_code
     "THUDM/glm-4-9b-chat",
@@ -182,7 +183,11 @@ def run_model(model, benches, max_tokens):
     print(f"\n=== loading {model}  (tp={tp}, max_model_len={max_model_len})"
           + (f"  [local: {path}]" if path != model else ""), flush=True)
     t0 = time.time()
-    llm = LLM(model=path, dtype="bfloat16", trust_remote_code=True,
+    # dtype="auto" keeps each model in its released precision — bf16 for full-
+    # precision models, and the native fp8 / mxfp4 for frontier models that ship
+    # only quantized (Policy B: native release precision is allowed and labelled;
+    # post-hoc quantization of a bf16 model is not).
+    llm = LLM(model=path, dtype="auto", trust_remote_code=True,
               tensor_parallel_size=tp, gpu_memory_utilization=0.90,
               max_model_len=max_model_len, enforce_eager=False)
     print(f"    loaded in {time.time() - t0:.0f}s", flush=True)
