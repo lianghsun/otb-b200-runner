@@ -1,7 +1,19 @@
 {
   "ok": [
-    "microsoft/Phi-4-reasoning-plus"
+    "nvidia/NVIDIA-Nemotron-3-Nano-4B-BF16",
+    "Qwen/Qwen2.5-72B-Instruct",
+    "google/gemma-3-27b-it",
+    "Qwen/Qwen3-30B-A3B",
+    "Qwen/Qwen2.5-32B-Instruct",
+    "meta-models/Muse-Glimmer-30B",
+    "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16",
+    "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16"
   ],
   "skipped": [],
-  "failed": []
+  "failed": [
+    [
+      "Qwen/Qwen3.8-Flash-Next",
+      "RuntimeError: vLLM 0.28.0 不支援架構 ['Qwen4ExpForConditionalGeneration']（未下載權重即中止）"
+    ]
+  ]
 }
