@@ -1,7 +1,6 @@
 {
   "ok": [
-    "nvidia/NVIDIA-Nemotron-Nano-9B-v2",
-    "Qwen/QwQ-32B"
+    "microsoft/Phi-4-reasoning-plus"
   ],
   "skipped": [],
   "failed": []
