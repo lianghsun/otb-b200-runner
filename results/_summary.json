@@ -1,14 +1,5 @@
 {
-  "ok": [
-    "nvidia/NVIDIA-Nemotron-3-Nano-4B-BF16",
-    "Qwen/Qwen2.5-72B-Instruct",
-    "google/gemma-3-27b-it",
-    "Qwen/Qwen3-30B-A3B",
-    "Qwen/Qwen2.5-32B-Instruct",
-    "meta-models/Muse-Glimmer-30B",
-    "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16",
-    "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16"
-  ],
+  "ok": [],
   "skipped": [],
   "failed": [
     [
