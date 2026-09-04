@@ -73,7 +73,9 @@ DEFAULT_MODELS = [
     "Qwen/Qwen2.5-72B-Instruct",
     "tencent/Hunyuan-A13B-Instruct",               # (g?) trust_remote_code
     # reasoning (get max_tokens 16384 — see MAX_TOKENS)
-    "microsoft/Phi-4-reasoning-plus",
+    # Phi-4-reasoning-plus cancelled: box 0% + ~random accuracy (its long CoT is
+    # truncated before the \boxed{} answer, hash-only output can't diagnose it,
+    # and the user opted not to re-run it with a bigger budget). Off the board.
     "Qwen/QwQ-32B",
     "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B",
     # R1-Distill 32B/70B cancelled per request (distills no longer needed;
@@ -82,7 +84,6 @@ DEFAULT_MODELS = [
 
 # Reasoning models need room to finish thinking before the \boxed{} answer.
 MAX_TOKENS = {
-    "microsoft/Phi-4-reasoning-plus": 16384,
     "Qwen/QwQ-32B": 16384,
     "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B": 16384,
     "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B": 16384,
