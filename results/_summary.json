@@ -1,7 +1,10 @@
 {
-  "ok": [
-    "moonshotai/Kimi-K2-Thinking"
-  ],
+  "ok": [],
   "skipped": [],
-  "failed": []
+  "failed": [
+    [
+      "Qwen/Qwen3.8-Flash-Next",
+      "RuntimeError: vLLM 0.28.0 不支援架構 ['Qwen4ExpForConditionalGeneration']（未下載權重即中止）"
+    ]
+  ]
 }
