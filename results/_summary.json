@@ -1,10 +1,7 @@
 {
-  "ok": [],
+  "ok": [
+    "zai-org/GLM-4.5"
+  ],
   "skipped": [],
-  "failed": [
-    [
-      "Qwen/Qwen3.8-Flash-Next",
-      "RuntimeError: vLLM 0.28.0 不支援架構 ['Qwen4ExpForConditionalGeneration']（未下載權重即中止）"
-    ]
-  ]
+  "failed": []
 }
