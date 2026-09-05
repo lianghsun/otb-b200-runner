@@ -3,8 +3,8 @@
   "skipped": [],
   "failed": [
     [
-      "Qwen/Qwen3.8-Flash-Next",
-      "RuntimeError: vLLM 0.28.0 不支援架構 ['Qwen4ExpForConditionalGeneration']（未下載權重即中止）"
+      "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16",
+      "RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}"
     ]
   ]
 }
