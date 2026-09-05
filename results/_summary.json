@@ -3,7 +3,7 @@
   "skipped": [],
   "failed": [
     [
-      "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16",
+      "MiniMaxAI/MiniMax-M3",
       "RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}"
     ]
   ]
