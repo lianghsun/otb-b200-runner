@@ -27,6 +27,7 @@ import hashlib
 import json
 import os
 import pathlib
+import sys
 import random
 import re
 import time
@@ -182,6 +183,16 @@ def run_model(model, benches, max_tokens):
     reasoning = model in MAX_TOKENS
     max_model_len = 20480 if reasoning else 8192
     path = LOCAL_ALIAS.get(model, model)
+    # Models that need a local conversion first (Breeze2: strip the vision tower).
+    # prepare_breeze2.py writes ./breeze2-3b-text; run it once if it's not there.
+    if path != model and not pathlib.Path(path).exists():
+        prep = HERE / "prepare_breeze2.py"
+        if prep.exists():
+            print(f"    {path} missing — running {prep.name} to build it", flush=True)
+            import subprocess
+            subprocess.run([sys.executable, str(prep)], check=True)
+        if not pathlib.Path(path).exists():
+            raise FileNotFoundError(f"{path} still missing after prepare step; cannot load {model}")
     print(f"\n=== loading {model}  (tp={tp}, max_model_len={max_model_len})"
           + (f"  [local: {path}]" if path != model else ""), flush=True)
     t0 = time.time()
