@@ -200,8 +200,11 @@ def run_model(model, benches, max_tokens):
     # precision models, and the native fp8 / mxfp4 for frontier models that ship
     # only quantized (Policy B: native release precision is allowed and labelled;
     # post-hoc quantization of a bf16 model is not).
+    # GPU_MEM_UTIL lets a shared GPU (e.g. home-srv's 3090 already hosting an
+    # embedding model) cap vLLM to the free slice instead of the default 90%.
+    mem_util = float(os.environ.get("GPU_MEM_UTIL", "0.90"))
     llm = LLM(model=path, dtype="auto", trust_remote_code=True,
-              tensor_parallel_size=tp, gpu_memory_utilization=0.90,
+              tensor_parallel_size=tp, gpu_memory_utilization=mem_util,
               max_model_len=max_model_len, enforce_eager=False)
     print(f"    loaded in {time.time() - t0:.0f}s", flush=True)
     sp = SamplingParams(temperature=0.0, max_tokens=max_tokens)
