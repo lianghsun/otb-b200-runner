@@ -1,7 +1,7 @@
 {
   "ok": [
-    "LiquidAI/LFM2-700M",
-    "ibm-granite/granite-4.0-h-small"
+    "LiquidAI/LFM2-1.2B",
+    "taide/Gemma-3-TAIDE-12b-Chat-2602"
   ],
   "skipped": [],
   "failed": []
