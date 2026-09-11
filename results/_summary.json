@@ -1,14 +1,12 @@
 {
-  "ok": [],
+  "ok": [
+    "taide/Llama-3.1-TAIDE-LX-8B-Chat"
+  ],
   "skipped": [],
   "failed": [
     [
-      "ibm-granite/granite-4.0-h-tiny",
-      "RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}"
-    ],
-    [
-      "Qwen/Qwen3.8-Flash-Next",
-      "RuntimeError: vLLM 0.28.0 不支援架構 ['Qwen4ExpForConditionalGeneration']（未下載權重即中止）"
+      "ibm-granite/granite-4.0-micro",
+      "EngineDeadError: EngineCore encountered an issue. See stack trace (above) for the root cause."
     ]
   ]
 }
