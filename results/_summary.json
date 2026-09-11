@@ -1,12 +1,8 @@
 {
   "ok": [
-    "taide/Llama-3.1-TAIDE-LX-8B-Chat"
+    "LiquidAI/LFM2-700M",
+    "ibm-granite/granite-4.0-h-small"
   ],
   "skipped": [],
-  "failed": [
-    [
-      "ibm-granite/granite-4.0-micro",
-      "EngineDeadError: EngineCore encountered an issue. See stack trace (above) for the root cause."
-    ]
-  ]
+  "failed": []
 }
